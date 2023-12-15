@@ -9,12 +9,23 @@
 <body>
   <p>
     <?php
-    function greater($x, $y){
-      if($x)
 
+    function greater($x, $y)
+    {
+      if ($x < $y) {
+        echo "x < y";
+      } elseif ($x > $y) {
+        echo "x > y";
+      } elseif ($x === $y) {
+        echo "x == y";
+      } else {
+        echo "";
+      }
     }
-
     ?>
+
+    <?php greater(5, 4); ?></br><?php greater(-50, -40); ?></br><?php greater(10, 10); ?>
+
 
 
 
