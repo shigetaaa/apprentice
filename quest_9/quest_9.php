@@ -12,29 +12,54 @@
   <h2>クラスの定義・コンストラクタ</h2>
   <p>
     <?php
+    //自販機に関して決定するクラス
     class VendingMachine
     {
-      public $maker;
+      public $maker; //メーカー名
+      public static $total_payment; //入金した合計額
+
 
       public function __construct($name)
       {
-        $this->maker = $name; //変数$makerにインスタンスを作った際、引数に入れた値を代入する
+        $this->maker = $name; //インスタンスを作った際、引数に入れた値を変数$makerに代入する
       }
 
-      public function pressButton()
-      {
-        echo "cider";
-      }
+
 
       public function pressManufacturerName()
       {
-        echo $this->maker; //コンストラクタで変数に代入したからといって、変数を表示せよ、だけでは出力されない。&this＝インスタンスと関連づける。
+        echo $this->maker; //変数$makerをインスタンスに紐づけて画面に出力する
+      }
+
+      //コインを入れられるメソッド
+      public function depositCoin($payment)
+      {
+        if ($payment == 100) {
+          $sum = $this->total_payment + $payment;
+          echo $sum . "<br>";
+        }
+      }
+
+      //ボタンを押すと飲み物が出てくるメソッド
+      public function pressButton()
+      {
+        $total = $this->total_payment;
+        if ($total >= 100)
+          echo "cider" . "<br>";
       }
     }
 
+    //1.クラスの定義 OK
+    //2.コンストラクタ OK
+    //3.メソッドの可読性
     $vendingMachine = new VendingMachine('サントリー');
-    echo $vendingMachine->pressButton() . "</br>";
-    echo $vendingMachine->pressManufacturerName();
+    echo $vendingMachine->pressButton(); //ここまでOK
+
+    $vendingMachine->depositCoin(150); //ここまでOK
+    //困っていることメソッド間で変数を引き継げない
+
+
+
 
     ?>
   </p>
