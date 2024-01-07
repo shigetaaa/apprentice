@@ -207,7 +207,7 @@ INSERT INTO channels (channels_name) VALUES
 
 SELECT * FROM channels;
 
-### time_sectionsテーブルを作成する
+### time_sectionsテーブルのサンプルデータ作成
 
 まずサンプルデータを挿入します。
 以下のコードを入力し実行してください。
@@ -244,7 +244,7 @@ INSERT INTO time_sections (start_time, end_time) VALUES
 SELECT * FROM time_sections;
 
 
-### categoriesテーブルを作成する
+### categoriesテーブルのサンプルデータ作成
 
 まずサンプルデータを挿入します。
 以下のコードを入力し実行してください。
@@ -283,7 +283,7 @@ INSERT INTO categories (category_name) VALUES
 SELECT * FROM categories;
 
 
-### programsテーブルを作成する
+### programsテーブルのサンプルデータ作成
 
 まずサンプルデータを挿入します。
 以下のコードを入力し実行してください。
@@ -314,7 +314,7 @@ INSERT INTO programs (program_name, program_details) VALUES
 
 SELECT * FROM programs;
 
-### program_categoriesテーブルを作成する
+### program_categoriesテーブルのサンプルデータ作成
 
 まずサンプルデータを挿入します。
 以下のコードを入力し実行してください。
@@ -328,7 +328,7 @@ INSERT INTO program_categories (program_id, category_id) VALUES
 SELECT * FROM program_categories;
 
 
-### episodesテーブルを作成する
+### episodesテーブルのサンプルデータ作成
 
 まずサンプルデータを挿入します。
 以下のコードを入力し実行してください。
@@ -372,19 +372,25 @@ INSERT INTO episodes (program_id, season_no, episode_no, episode_title, play_tim
 SELECT * FROM episodes;
 
 
-### channel_schedulesテーブルを作成する
+### channel_schedulesテーブルのサンプルデータ作成
 
 まずサンプルデータを挿入します。
-以下のコードを入力し実行してください。
+データ量が多いためファイルを取り込む形でテーブルにデータをセットします。
 
+コマンドプロンプトを立ち上げてください。
+以下のコードを入力しエンターキーを押してください。
 
-
+mysql -u ユーザー名 -p -D internet_tv < channel_schedules_insert_corrected_v3.sql
 
 
 入力ができたら以下のコードを実行してください。
 表示されたカラムに不備がないか確認します。
 
-### viewsテーブルを作成する
+SELECT * FROM channel_schedules;
+
+
+
+### viewsテーブルのサンプルデータ作成
 
 まずサンプルデータをCSVで用意します。
 データ量が大きいためCSVファイルのままテーブルに取り込みます。
@@ -406,8 +412,7 @@ C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/channel_schedules_50.csv
 また、secure_file_privシステム変数が設定されている場合は、
 その値で指定されたディレクトリ内のファイルのみを読み込むことができます。
 
-確認するには以下のコマンドを入力すると
-指定できるディレクトリがわかります。
+指定されているディレクトリを確認するには以下のコマンドを入力してください。
 SHOW VARIABLES LIKE 'secure_file_priv';
 
 
